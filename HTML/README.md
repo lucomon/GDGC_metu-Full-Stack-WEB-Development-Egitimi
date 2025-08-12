@@ -1,41 +1,51 @@
-# 📚 HTML Eğitimi
+# 📚 HTML Eğitimi - Detaylı Rehber
 
-Bu doküman, HTML öğrenmek isteyenler için başlangıç seviyesinden orta seviyeye kadar bir eğitim rehberidir.  
-HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan işaretleme dilidir.
+Bu doküman, HTML öğrenmek isteyenler için **başlangıç seviyesinden ileri seviyeye** kadar kapsamlı bir eğitim rehberidir.  
+HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan **işaretleme dilidir**. CSS ile görünüm, JavaScript ile etkileşim eklenir.
 
 ---
 
 ## 🎯 İçindekiler
 1. [HTML Nedir?](#-html-nedir)
-2. [Temel HTML Yapısı](#-temel-html-yapısı)
-3. [Başlıklar ve Paragraflar](#-başlıklar-ve-paragraflar)
-4. [Metin Biçimlendirme](#-metin-biçimlendirme)
-5. [Bağlantılar (Links)](#-bağlantılar-links)
-6. [Görseller (Images)](#-görseller-images)
-7. [Listeler](#-listeler)
-8. [Tablolar](#-tablolar)
-9. [Formlar](#-formlar)
-10. [Semantic HTML](#-semantic-html)
-11. [Kaynaklar](#-kaynaklar)
+2. [HTML Kurulumu ve İlk Sayfa](#-html-kurulumu-ve-ilk-sayfa)
+3. [HTML Temel Yapısı](#-html-temel-yapısı)
+4. [Başlıklar ve Paragraflar](#-başlıklar-ve-paragraflar)
+5. [Metin Biçimlendirme Etiketleri](#-metin-biçimlendirme-etiketleri)
+6. [Bağlantılar (Links)](#-bağlantılar-links)
+7. [Görseller (Images)](#-görseller-images)
+8. [Listeler (Lists)](#-listeler-lists)
+9. [Tablolar (Tables)](#-tablolar-tables)
+10. [Formlar ve Giriş Elemanları](#-formlar-ve-giriş-elemanları)
+11. [Multimedya Etiketleri](#-multimedya-etiketleri)
+12. [Semantic HTML](#-semantic-html)
+13. [Meta Etiketler ve SEO](#-meta-etiketler-ve-seo)
+14. [HTML5 Yenilikleri](#-html5-yenilikleri)
+15. [En İyi Uygulamalar](#-en-iyi-uygulamalar)
+16. [Kaynaklar](#-kaynaklar)
 
 ---
 
 ## 📌 HTML Nedir?
-- HTML, web sayfalarının temel yapısını tanımlar.
-- CSS ile görsel stil, JavaScript ile etkileşim eklenir.
-- Bir HTML dosyasının uzantısı `.html` veya `.htm` olur.
+- **HTML**, web sayfalarının temel yapısını tanımlayan bir işaretleme dilidir.
+- 1991 yılında **Tim Berners-Lee** tarafından geliştirilmiştir.
+- **HTML** tek başına görsel stil veya etkileşim sağlamaz, bu iş için **CSS** ve **JavaScript** kullanılır.
 
 ---
 
-## 🏗 Temel HTML Yapısı
+## 🖥 HTML Kurulumu ve İlk Sayfa
 
+HTML kodlarını çalıştırmak için yalnızca bir **metin editörü** ve **web tarayıcısı** yeterlidir.
+
+**Adımlar:**
+1. Masaüstünde `index.html` isminde bir dosya oluşturun.
+2. Aşağıdaki kodları yapıştırın:
 ```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merhaba HTML</title>
+    <title>İlk HTML Sayfam</title>
 </head>
 <body>
     <h1>Merhaba Dünya!</h1>
@@ -43,11 +53,20 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
 </body>
 </html>
 ```
+3. Dosyayı kaydedin ve çift tıklayarak tarayıcıda açın.
 
-- **`<!DOCTYPE html>`** → HTML5 standardını belirtir.
-- **`<html>`** → Sayfanın tüm içeriğini kapsar.
-- **`<head>`** → Başlık, meta bilgileri, CSS ve JS dosyaları eklenir.
-- **`<body>`** → Kullanıcıya görünen içerik.
+---
+
+## 🏗 HTML Temel Yapısı
+
+Bir HTML belgesi şu ana bölümlerden oluşur:
+
+| Bölüm | Açıklama |
+|-------|----------|
+| `<!DOCTYPE html>` | HTML5 kullanıldığını belirtir |
+| `<html>` | Sayfanın tamamını kapsar |
+| `<head>` | Meta bilgiler, başlık, stil dosyaları |
+| `<body>` | Görünecek içerikler |
 
 ---
 
@@ -60,17 +79,24 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
 <p>Bu bir paragraf örneğidir.</p>
 ```
 
-- **`<h1>`** en büyük başlıktır, **`<h6>`** en küçüğüdür.
-- **`<p>`** paragraf metinleri için kullanılır.
+**Not:** Bir sayfada **sadece bir tane `<h1>`** kullanılması SEO açısından daha iyidir.
 
 ---
 
-## ✏ Metin Biçimlendirme
+## ✏ Metin Biçimlendirme Etiketleri
 
+| Etiket | Açıklama |
+|--------|----------|
+| `<b>` | Kalın metin |
+| `<strong>` | Önemli metin (SEO etkili) |
+| `<i>` | İtalik metin |
+| `<em>` | Vurgulu metin |
+| `<u>` | Altı çizili metin |
+| `<mark>` | Arka planı vurgulu metin |
+
+**Örnek:**
 ```html
-<p><b>Kalın metin</b> ve <i>italik metin</i>.</p>
-<p><strong>Önemli metin</strong> ve <em>vurgulu metin</em>.</p>
-<p><u>Altı çizili</u> ve <mark>vurgulanmış</mark> metin.</p>
+<p><strong>Önemli</strong> kelimeyi <em>vurgulamak</em> için kullanılır.</p>
 ```
 
 ---
@@ -78,11 +104,13 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
 ## 🔗 Bağlantılar (Links)
 
 ```html
-<a href="https://www.google.com" target="_blank">Google'a git</a>
+<a href="https://www.google.com" target="_blank">Google</a>
 ```
 
-- **`href`** → Hedef URL.
-- **`target="_blank"`** → Yeni sekmede açar.
+**Özellikler:**
+- `href` → Bağlantı adresi
+- `target="_blank"` → Yeni sekmede açar
+- `title` → Üzerine gelince görünen bilgi
 
 ---
 
@@ -92,20 +120,19 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
 <img src="resim.jpg" alt="Açıklama" width="300">
 ```
 
-- **`src`** → Resmin yolu.
-- **`alt`** → Erişilebilirlik açıklaması.
-- **`width`** / **`height`** → Boyut.
+- `src` → Resim yolu
+- `alt` → Erişilebilirlik için açıklama
+- `width` ve `height` → Boyut
 
 ---
 
-## 📋 Listeler
+## 📋 Listeler (Lists)
 
 **Sırasız Liste**
 ```html
 <ul>
     <li>Elma</li>
     <li>Armut</li>
-    <li>Muz</li>
 </ul>
 ```
 
@@ -114,16 +141,24 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
 <ol>
     <li>Adım 1</li>
     <li>Adım 2</li>
-    <li>Adım 3</li>
 </ol>
+```
+
+**Tanım Listesi**
+```html
+<dl>
+    <dt>HTML</dt>
+    <dd>Web sayfa iskeletini oluşturur</dd>
+</dl>
 ```
 
 ---
 
-## 📊 Tablolar
+## 📊 Tablolar (Tables)
 
 ```html
 <table border="1">
+    <caption>Öğrenci Listesi</caption>
     <tr>
         <th>Ad</th>
         <th>Yaş</th>
@@ -137,7 +172,7 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
 
 ---
 
-## 📮 Formlar
+## 📮 Formlar ve Giriş Elemanları
 
 ```html
 <form action="/gonder" method="POST">
@@ -147,20 +182,65 @@ HTML (*HyperText Markup Language*), web sayfalarının iskeletini oluşturan iş
     <label>E-posta:</label>
     <input type="email" name="email" required>
     
+    <label>Mesaj:</label>
+    <textarea name="mesaj"></textarea>
+
     <input type="submit" value="Gönder">
 </form>
 ```
 
 ---
 
+## 🎵🎥 Multimedya Etiketleri
+
+```html
+<audio controls>
+    <source src="ses.mp3" type="audio/mpeg">
+</audio>
+
+<video controls width="400">
+    <source src="video.mp4" type="video/mp4">
+</video>
+```
+
+---
+
 ## 🏷 Semantic HTML
-Semantic (anlamlı) etiketler, içeriğin amacını belirtir:
-- `<header>` → Üst bölüm
-- `<nav>` → Menü
-- `<main>` → Ana içerik
-- `<section>` → Bölüm
-- `<article>` → Makale
-- `<footer>` → Alt bilgi
+
+| Etiket | Kullanım |
+|--------|----------|
+| `<header>` | Üst kısım |
+| `<nav>` | Menü |
+| `<main>` | Ana içerik |
+| `<section>` | Bölüm |
+| `<article>` | Makale |
+| `<footer>` | Alt bilgi |
+
+---
+
+## 🌐 Meta Etiketler ve SEO
+
+```html
+<meta name="description" content="HTML eğitim rehberi">
+<meta name="keywords" content="HTML, eğitim, web geliştirme">
+<meta name="author" content="Senin Adın">
+```
+
+---
+
+## 🚀 HTML5 Yenilikleri
+- `<video>` ve `<audio>` desteği
+- `<canvas>` ile çizim
+- `<section>`, `<article>` gibi anlamlı etiketler
+- Form giriş tipleri (`email`, `date`, `range`)
+
+---
+
+## ✅ En İyi Uygulamalar
+- Etiketleri kapatmayı unutmayın.
+- Anlamlı etiketler kullanın.
+- Resimlerde mutlaka `alt` ekleyin.
+- Kodunuzu düzenli girintileyin.
 
 ---
 
