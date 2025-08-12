@@ -164,9 +164,3 @@ Semantic (anlamlı) etiketler, içeriğin amacını belirtir:
 
 ---
 
-## 📚 Kaynaklar
-- [MDN HTML Rehberi](https://developer.mozilla.org/tr/docs/Web/HTML)
-- [W3Schools HTML Tutorial](https://www.w3schools.com/html/)
-- [HTML Living Standard](https://html.spec.whatwg.org/)
-
----
