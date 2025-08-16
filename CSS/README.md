@@ -250,41 +250,6 @@ npx tailwindcss init
 
 ---
 
-## 📚 Ödevler
-
-### Ödev 1: Kişisel Portföy Sayfası
-Tailwind CSS kullanarak basit bir portföy sayfası oluşturun:
-- Hero section
-- Projeler bölümü
-- İletişim formu
-
-### Ödev 2: E-ticaret Ürün Kartı
-Bir e-ticaret sitesi için ürün kartı tasarlayın:
-- Ürün resmi
-- Fiyat bilgisi
-- Satın alma butonu
-
-### Ödev 3: Dashboard Layout
-Admin paneli için dashboard layout oluşturun:
-- Sidebar menü
-- Header
-- İçerik alanı
-
----
-
-## 🔧 Faydalı Kaynaklar
-
-### CSS Kaynakları:
-- [MDN CSS](https://developer.mozilla.org/tr/docs/Web/CSS)
-- [W3Schools CSS](https://www.w3schools.com/css/)
-- [CSS-Tricks](https://css-tricks.com/)
-
-### Tailwind CSS:
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [Tailwind Components](https://tailwindui.com/)
-
----
-
 ## 📝 Önemli Notlar
 
 ### CSS En İyi Uygulamaları:
