@@ -618,70 +618,8 @@ Semantik HTML, anlamlı ve yapılandırılmış web sayfaları oluşturmak için
 
 ---
 
-## 📚 Ödevler
-
-### Ödev 1: Kişisel Profil Sayfası
-Aşağıdaki özelliklere sahip bir kişisel profil sayfası oluşturun:
-
-**Gereksinimler:**
-- Başlık ve alt başlık
-- Profil resmi
-- Hakkında bölümü
-- Yetenekler listesi
-- İletişim formu
-- Sosyal medya bağlantıları
-
-### Ödev 2: Restoran Menü Sayfası
-Bir restoranın menü sayfasını oluşturun:
-
-**Gereksinimler:**
-- Restoran adı ve açıklaması
-- Kategorilere ayrılmış menü (başlangıçlar, ana yemekler, tatlılar)
-- Fiyat bilgileri
-- İletişim bilgileri
-- Çalışma saatleri tablosu
-
-### Ödev 3: Blog Ana Sayfası
-Bir blog ana sayfası tasarlayın:
-
-**Gereksinimler:**
-- Blog başlığı ve açıklaması
-- En son yazılar listesi
-- Kategoriler menüsü
-- Abone olma formu
-- Footer bölümü
-
----
-
-## 🔧 Faydalı Araçlar ve Kaynaklar
-
-### Online Editörler:
-- [CodePen](https://codepen.io/)
-- [JSFiddle](https://jsfiddle.net/)
-- [Replit](https://replit.com/)
-
-### HTML Doğrulama:
-- [W3C Validator](https://validator.w3.org/)
-
-### Öğrenme Kaynakları:
-- [MDN Web Docs](https://developer.mozilla.org/tr/docs/Web/HTML)
-- [W3Schools HTML Tutorial](https://www.w3schools.com/html/)
-- [HTML.com](https://html.com/)
-
-### Pratik Yapma:
-- [FreeCodeCamp](https://www.freecodecamp.org/)
-- [Codecademy](https://www.codecademy.com/)
-
----
 
 ## 📝 Önemli Notlar
-
-### En İyi Uygulamalar:
-1. **Semantik HTML kullanın** - Anlamlı etiketler seçin
-2. **Alt metinleri unutmayın** - Resimler için alt özelliği ekleyin
-3. **Form doğrulaması yapın** - required, pattern gibi özellikleri kullanın
-4. **Responsive tasarım düşünün** - Mobil uyumlu olun
-5. **SEO dostu olun** - Başlık hiyerarşisine dikkat edin
 
 ### Yaygın Hatalar:
 - Etiketleri kapatmayı unutmak
@@ -698,5 +636,4 @@ HTML temellerini öğrendikten sonra şunları öğrenebilirsiniz:
 
 1. **CSS** - Stil ve görünüm
 2. **JavaScript** - Etkileşim ve dinamik içerik
-3. **Responsive Design** - Mobil uyumlu tasarım
-
+3. **React** - 
