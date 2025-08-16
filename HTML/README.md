@@ -140,10 +140,10 @@ Her HTML dosyası aşağıdaki temel yapıya sahip olmalıdır:
 <a href="https://www.google.com" target="_blank">Google'a Git (Yeni Sekme)</a>
 
 <!-- E-posta bağlantısı -->
-<a href="mailto:ornek@email.com">E-posta Gönder</a>
+<a href="mailto:farukboraguvenkaya.gdgc@gmail.com">E-posta Gönder</a>
 
 <!-- Telefon bağlantısı -->
-<a href="tel:+905551234567">Bizi Arayın</a>
+<a href="tel:+905378336283">Bizi Arayın</a>
 
 <!-- Sayfa içi bağlantı -->
 <a href="#bolum1">Bölüm 1'e Git</a>
@@ -260,24 +260,19 @@ Her HTML dosyası aşağıdaki temel yapıya sahip olmalıdır:
     <thead>
         <tr>
             <th>Ad Soyad</th>
-            <th>Matematik</th>
-            <th>Türkçe</th>
-            <th>Ortalama</th>
+            <th>PHYS105</th>
+            <th>MATH119</th>
+            <th>CENG111</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Ahmet Yılmaz</td>
-            <td>85</td>
+            <td>Faruk Bora Güvenkaya</td>
+            <td>98</td>
             <td>90</td>
-            <td>87.5</td>
+            <td>92.5</td>
         </tr>
-        <tr>
-            <td>Ayşe Demir</td>
-            <td>92</td>
-            <td>88</td>
-            <td>90</td>
-        </tr>
+        
     </tbody>
 </table>
 ```
@@ -499,11 +494,11 @@ Semantik HTML, anlamlı ve yapılandırılmış web sayfaları oluşturmak için
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmet Yılmaz - Kişisel Web Sayfası</title>
+    <title>Faruk Bora Güvenkaya - Kişisel Web Sayfası</title>
 </head>
 <body>
     <header>
-        <h1>Ahmet Yılmaz</h1>
+        <h1>Faruk Bora Güvenkaya</h1>
         <p>Web Geliştirici & Tasarımcı</p>
         <nav>
             <a href="#hakkimda">Hakkımda</a> |
@@ -515,8 +510,8 @@ Semantik HTML, anlamlı ve yapılandırılmış web sayfaları oluşturmak için
     <main>
         <section id="hakkimda">
             <h2>Hakkımda</h2>
-            <img src="profil.jpg" alt="Ahmet Yılmaz" width="200">
-            <p>Merhaba! Ben Ahmet Yılmaz. 5 yıldır web geliştirme alanında çalışıyorum.</p>
+            <img src="profil.jpg" alt="Faruk Bora Güvenkaya" width="200">
+            <p>Merhaba! Ben Faruk Bora Güvenkaya. 1 yıldır web geliştirme alanında çalışıyorum.</p>
             
             <h3>Yeteneklerim</h3>
             <ul>
@@ -532,7 +527,7 @@ Semantik HTML, anlamlı ve yapılandırılmış web sayfaları oluşturmak için
             <article>
                 <h3>E-ticaret Sitesi</h3>
                 <p>Modern bir e-ticaret platformu geliştirdim.</p>
-                <a href="https://github.com/ahmet/proje1" target="_blank">GitHub'da Görüntüle</a>
+                <a href="https://github.com/faruk/proje1" target="_blank">GitHub'da Görüntüle</a>
             </article>
         </section>
 
@@ -554,8 +549,8 @@ Semantik HTML, anlamlı ve yapılandırılmış web sayfaları oluşturmak için
     </main>
 
     <footer>
-        <p>&copy; 2024 Ahmet Yılmaz. Tüm hakları saklıdır.</p>
-        <p>E-posta: <a href="mailto:ahmet@email.com">ahmet@email.com</a></p>
+        <p>&copy; 2024 Faruk Bora Güvenkaya. Tüm hakları saklıdır.</p>
+        <p>E-posta: <a href="mailto:farukboraguvenkaya.gdgc@gmail.com">faruk@email.com</a></p>
     </footer>
 </body>
 </html>
