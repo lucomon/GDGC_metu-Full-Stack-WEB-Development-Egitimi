@@ -1,13 +1,13 @@
 # JavaScript Temelleri (Yeni Başlayanlar İçin) – README
 
-Bu kılavuz, JavaScript’e sıfırdan başlayan birinin hızlı ve sağlam bir temel oluşturması için hazırlandı. Her bölümde “Nedir?”, “Nasıl kullanılır?”, “Sık hatalar”, “Alıştırmalar” bulunur. Kodları tarayıcıda (Console) ya da Node.js ile çalıştırabilirsiniz.
+Bu kılavuz, JavaScript’e sıfırdan başlayan birinin hızlı ve sağlam bir temel oluşturması için hazırlandı. Her bölümde “Nedir?”, “Nasıl kullanılır?” bulunur. Kodları tarayıcıda (Console) ya da Node.js ile çalıştırabilirsiniz.
 
 ## İçindekiler
 - [JavaScript’i Çalıştırmak](#javascripti-çalıştırmak)
 - [Temel Data Tipleri](#temel-data-tipleri)
 - [Değişken Tanımlama](#değişken-tanımlama)
-- [Temel Operatörler](#temel-operatörler)
 - [Temel Aritmetik Operatörler](#temel-aritmetik-operatörler)
+- [Temel Operatörler](#temel-operatörler)
 - [Strings](#strings)
 - [Arrays](#arrays)
 - [if/else İfadeleri](#ifelse-ifadeleri)
@@ -81,39 +81,12 @@ typeof { a: 1 };      // "object"
 typeof [1, 2, 3];     // "object" (diziler de nesnedir)
 ```
 
-- `null`: bilerek boş değer. `undefined`: atanmamış/değeri yok.
-- `number`: Tam sayılar ve ondalıklar aynı tiptedir. Kayan nokta hassasiyetine dikkat:
-```js
-0.1 + 0.2 === 0.3; // false
-Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON; // true
-```
-- Dönüşümler:
-```js
-Number("42");        // 42
-parseInt("08", 10);   // 8  (radix verin)
-parseFloat("3.14px"); // 3.14
-Boolean(0);           // false
-Boolean("0");        // true
-```
-- `NaN`: "Not-a-Number". Karşılaştırılamaz:
-```js
-NaN === NaN;             // false
-Number.isNaN(NaN);       // true
-Number.isNaN("foo");    // false
-isNaN("foo");           // true (gevşek, önerilmez)
-```
-- Truthy/Falsy:
-  - Falsy: `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN`
-  - Diğer her şey truthy’dir.
+
 
 ### Sık Hatalar
 - `typeof null` → `"object"` gelmesi normaldir.
 - `BigInt` ile `Number` toplanamaz: `1n + 1` hata verir.
-- Ondalık aritmetiğinde küçük farklar olabilir (kayan nokta).
-
-### Alıştırma
-- Bir metni sayıya çevirip 10 ekleyin. "42" → 52
-- Farklı değerleri `Boolean(...)` ile deneyin ve sonuçları yorumlayın.
+- Ondalık aritmetiğinde küçük farklar olabilir (precision loss).
 
 ---
 
@@ -150,35 +123,6 @@ k.ad = "Luna"; // OK (içerik değişti)
 - `const` ile bir dizi tanımlayın, `push` ile eleman ekleyin; çalıştığını gözlemleyin.
 
 ---
-
-## Temel Operatörler
-
-### Nedir?
-Atama, karşılaştırma ve mantıksal işlemleri ifade eden semboller.
-
-### Nasıl kullanılır?
-- Atama: `=`, `+=`, `-=`, `*=`, `/=`, `%=` ...
-- Karşılaştırma: `===`, `!==`, `>`, `<`, `>=`, `<=`
-```js
-3 === 3;     // true
-"3" === 3;   // false (tür farkı)
-"3" == 3;    // true  (dönüşüm yapar, önerilmez)
-```
-- Üçlü (ternary):
-```js
-const yas = 20;
-const yetiskin = yas >= 18 ? "Evet" : "Hayır";
-```
-- Tür: `typeof x`
-
-### Sık Hatalar
-- `==` beklenmedik dönüşümlere yol açar: ` == 0` true, `false == 0` true. Daima `===` kullanın.
-
-### Alıştırma
-- Bir sayının çift mi tek mi olduğunu ternary ile yazdırın.
-
----
-
 ## Temel Aritmetik Operatörler
 
 ### Nedir?
@@ -206,12 +150,28 @@ x++;        // 2 (sonra arttır)
 +"10" + 5;         // 15 (unary + ile sayıya çevirir)
 ```
 
-### Sık Hatalar
-- `sort()` sayıları metin gibi sıralar; karşılaştırma fonksiyonu verin (bkz. Arrays).
-- Kayan nokta hataları: 0.1 + 0.2 ≠ 0.3
 
-### Alıştırma
-- Kullanıcıdan iki sayı alıp (string), toplamını doğru hesaplayın (unary `+` veya `Number`).
+
+---
+## Temel Operatörler
+
+### Nedir?
+Atama, karşılaştırma ve mantıksal işlemleri ifade eden semboller.
+
+### Nasıl kullanılır?
+- Atama: `=`, `+=`, `-=`, `*=`, `/=`, `%=` ...
+- Karşılaştırma: `===`, `!==`, `>`, `<`, `>=`, `<=`
+```js
+3 === 3;     // true
+"3" === 3;   // false (tür farkı)
+"3" == 3;    // true  (dönüşüm yapar, önerilmez)
+```
+- Üçlü (ternary):
+```js
+const yas = 20;
+const yetiskin = yas >= 18 ? "Evet" : "Hayır";
+```
+- Tür: `typeof x`
 
 ---
 
@@ -244,13 +204,6 @@ s.slice(2, 9);            // "Merhaba"
 ```js
 const poem = `Satır 1\nSatır 2`;
 ```
-
-### Sık Hatalar
-- `toUpperCase()` orijinali değiştirmez; sonucu yeniden atayın.
-- Unicode/emoji uzunluğu beklenenden farklı olabilir; `Array.from(str)` ile karakter karakter gezilebilir.
-
-### Alıştırma
-- Bir cümledeki kelimeleri sayın: `"Merhaba JS dünyası"` → 3
 
 ---
 
@@ -308,13 +261,6 @@ const s = arr.toSorted();   // [1,2,3]
 const r = arr.toReversed(); // [2,1,3] -> örnek amaçlı
 ```
 
-### Sık Hatalar
-- `sort()` karşılaştırma fonksiyonu olmadan sayıları metin gibi sıralar.
-- Referans kopyası: `const b = a;` aynı diziyi gösterir; `b.push(...)` `a`yı da değiştirir. Kopya için `[...]` kullanın.
-
-### Alıştırma
-- İçinde negatif de olan bir diziyi yalnızca pozitiflere filtreleyip küçükten büyüğe sıralayın.
-
 ---
 
 ## if/else İfadeleri
@@ -349,12 +295,6 @@ function login(user) {
   return "Giriş başarılı";
 }
 ```
-
-### Sık Hatalar
-- Çok katmanlı if/else okumayı zorlaştırır; erken çıkış veya `switch`/harita (object lookup) düşünün.
-
-### Alıştırma
-- Notu 0–100 arasında olmayan girdiler için "Geçersiz" yazdırın; diğerlerini harf notuna çevirin.
 
 ---
 
@@ -393,13 +333,6 @@ cache ||= {};    // cache falsy ise yeni obje ata
 let name;
 name ??= "Anonim"; // yalnızca name null/undefined ise ata
 ```
-
-### Sık Hatalar
-- `??` ile `||/&&` birlikte kullanırken parantez zorunlu olabilir: `a ?? (b || c)`.
-
-### Alıştırma
-- Kullanıcı adı boş string ise "Misafir", `null/undefined` ise "Anonim" olsun (`||` ve `??` farkını deneyin).
-
 ---
 
 ## switch Kullanımı
@@ -441,7 +374,3 @@ function gunAdi(g) {
 ```js
 const isim = {1: "Pzt", 2: "Sal"}[gun] ?? "?";
 ```
-
-### Sık Hatalar
-- `break` unutmak istenmeyen fall-through’a yol açar.
-
