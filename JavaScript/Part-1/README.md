@@ -120,6 +120,187 @@ function yasHesapla(dogumYili) {
 
 ---
 
+## 📊 Temel Veri Tipleri
+
+JavaScript'te veriler farklı türlerde olabilir. Her veri tipinin kendine özgü özellikleri ve davranışları vardır.
+
+### Primitive (İlkel) Veri Tipleri
+
+#### 1. String (Metin)
+```javascript
+let isim = "Faruk";
+let soyad = 'Güvenkaya';
+let mesaj = `Merhaba ${isim}!`; // Template literal
+
+console.log(typeof isim); // "string"
+```
+
+#### 2. Number (Sayı)
+JavaScript'te tüm sayılar `number` tipindedir. JavaScript, integer (tam sayı) ve float (ondalıklı sayı) arasında ayrım yapmaz.
+
+```javascript
+// Integer (Tam Sayılar)
+let tamSayi = 42;
+let negatifTam = -10;
+let sifir = 0;
+let buyukSayi = 1000000;
+
+// Float (Ondalıklı Sayılar)
+let ondalik = 3.14;
+let negatifOndalik = -2.5;
+let bilimsel = 1.23e-4; // 0.000123
+let buyukOndalik = 1.23e+6; // 1230000
+
+// Özel Number Değerleri
+let sonsuz = Infinity;
+let negatifSonsuz = -Infinity;
+let sayiDegil = NaN; // Not a Number
+
+console.log(typeof tamSayi); // "number"
+console.log(typeof ondalik); // "number"
+console.log(typeof bilimsel); // "number"
+```
+
+##### Number Sınırları ve Hassasiyet
+```javascript
+// JavaScript'te Number sınırları
+console.log(Number.MAX_VALUE);     // 1.7976931348623157e+308
+console.log(Number.MIN_VALUE);     // 5e-324
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991
+
+// Hassasiyet sorunları (Float hesaplamalarında)
+let a = 0.1;
+let b = 0.2;
+console.log(a + b); // 0.30000000000000004 (Beklenen: 0.3)
+
+// Çözüm: Math.round() veya toFixed()
+console.log(Math.round((a + b) * 100) / 100); // 0.3
+console.log((a + b).toFixed(2)); // "0.30"
+```
+
+##### Number Metodları
+```javascript
+let sayi = 3.14159;
+
+// Yuvarlama metodları
+console.log(Math.round(sayi));    // 3 (En yakın tam sayıya)
+console.log(Math.floor(sayi));    // 3 (Aşağı yuvarlama)
+console.log(Math.ceil(sayi));     // 4 (Yukarı yuvarlama)
+console.log(Math.trunc(sayi));    // 3 (Ondalık kısmı atma)
+
+// Mutlak değer
+console.log(Math.abs(-42));       // 42
+
+// Üs alma
+console.log(Math.pow(2, 3));      // 8
+console.log(2 ** 3);              // 8 (ES6 üs operatörü)
+
+// Karekök
+console.log(Math.sqrt(16));       // 4
+
+// Rastgele sayı (0-1 arası)
+console.log(Math.random());       // 0.123456789...
+console.log(Math.floor(Math.random() * 100)); // 0-99 arası tam sayı
+```
+
+#### 3. Boolean (Mantıksal)
+```javascript
+let dogru = true;
+let yanlis = false;
+
+console.log(typeof dogru); // "boolean"
+```
+
+#### 4. Undefined (Tanımsız)
+```javascript
+let tanimsiz;
+console.log(tanimsiz); // undefined
+console.log(typeof tanimsiz); // "undefined"
+```
+
+#### 5. Null (Boş)
+```javascript
+let bos = null;
+console.log(bos); // null
+console.log(typeof bos); // "object" (JavaScript'te bilinen bir hata)
+```
+
+#### 6. Symbol (Sembol) - ES6
+```javascript
+let sembol = Symbol("açıklama");
+console.log(typeof sembol); // "symbol"
+```
+
+### Reference (Referans) Veri Tipleri
+
+#### 7. Object (Nesne)
+```javascript
+let kullanici = {
+    isim: "Faruk",
+    yas: 25,
+    aktif: true
+};
+
+console.log(typeof kullanici); // "object"
+```
+
+#### 8. Array (Dizi)
+```javascript
+let renkler = ["kırmızı", "mavi", "yeşil"];
+let sayilar = [1, 2, 3, 4, 5];
+
+console.log(typeof renkler); // "object" (diziler de objedir)
+console.log(Array.isArray(renkler)); // true (dizi kontrolü)
+```
+
+#### 9. Function (Fonksiyon)
+```javascript
+function selamla() {
+    return "Merhaba!";
+}
+
+console.log(typeof selamla); // "function"
+```
+
+### Veri Tipi Kontrolü
+```javascript
+// typeof operatörü ile tip kontrolü
+let metin = "Merhaba";
+let sayi = 42;
+let mantik = true;
+
+console.log(typeof metin);   // "string"
+console.log(typeof sayi);    // "number"
+console.log(typeof mantik);  // "boolean"
+
+// Array kontrolü
+let dizi = [1, 2, 3];
+console.log(Array.isArray(dizi)); // true
+console.log(typeof dizi);         // "object"
+```
+
+### Veri Tipi Dönüşümleri
+```javascript
+// String'e dönüştürme
+let sayi = 42;
+let metin = String(sayi);        // "42"
+let metin2 = sayi.toString();    // "42"
+
+// Number'a dönüştürme
+let metin = "42";
+let sayi = Number(metin);        // 42
+let sayi2 = parseInt(metin);     // 42
+let sayi3 = parseFloat("3.14");  // 3.14
+
+// Boolean'a dönüştürme
+let metin = "Merhaba";
+let mantik = Boolean(metin);     // true
+let mantik2 = !!metin;           // true (çift ünlem ile)
+```
+
+---
+
 ## 📦 Değişkenler
 
 Değişkenler, veri saklamak için kullanılan konteynerlerdir.
