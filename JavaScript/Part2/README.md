@@ -13,14 +13,142 @@
 - [ES6+ Özellikleri](#es6-özellikleri)
 - [Class Syntax](#class-syntax)
 - [Import/Export](#importexport)
+- [Alıştırmalar](#alıştırmalar)
+- [Kaynaklar](#kaynaklar)
 
 ---
 
 ## ⚙️ Fonksiyonlar
 
-### Boolean Değer Döndüren Fonksiyonlar
+Fonksiyonlar, belirli bir görevi yerine getiren ve tekrar kullanılabilir kod bloklarıdır. JavaScript'te fonksiyonlar değer döndürebilir, parametre alabilir ve farklı türde veriler döndürebilir. Fonksiyonlar, kodun modülerliğini artırır ve aynı kodu tekrar yazmaktan kurtarır.
+
+### Fonksiyon Türleri
+
+#### 1. Function Declaration (Fonksiyon Bildirimi)
 ```javascript
-// Boolean değer döndüren fonksiyon
+// Function declaration - hoisting ile yukarı çekilir
+function selamla(isim) {
+    return `Merhaba ${isim}!`;
+}
+
+console.log(selamla("Faruk")); // "Merhaba Faruk!"
+```
+
+#### 2. Function Expression (Fonksiyon İfadesi)
+```javascript
+// Function expression - değişkene atanır
+const selamla = function(isim) {
+    return `Merhaba ${isim}!`;
+};
+
+console.log(selamla("Faruk")); // "Merhaba Faruk!"
+```
+
+#### 3. Arrow Function (Ok Fonksiyonu)
+```javascript
+// Arrow function - ES6 ile gelen kısa syntax
+const selamla = (isim) => `Merhaba ${isim}!`;
+
+console.log(selamla("Faruk")); // "Merhaba Faruk!"
+```
+
+### Fonksiyon Parametreleri
+
+#### Tek Parametre
+```javascript
+function kareAl(sayi) {
+    return sayi * sayi;
+}
+
+console.log(kareAl(5)); // 25
+```
+
+#### Çoklu Parametre
+```javascript
+function dikdortgenAlani(genislik, yukseklik) {
+    return genislik * yukseklik;
+}
+
+console.log(dikdortgenAlani(10, 5)); // 50
+```
+
+#### Varsayılan Parametreler
+```javascript
+function selamla(isim = "Misafir", mesaj = "Merhaba") {
+    return `${mesaj} ${isim}!`;
+}
+
+console.log(selamla());                    // "Merhaba Misafir!"
+console.log(selamla("Faruk"));            // "Merhaba Faruk!"
+console.log(selamla("Faruk", "Selam"));   // "Selam Faruk!"
+```
+
+#### Rest Parameters (Kalan Parametreler)
+```javascript
+function topla(...sayilar) {
+    let toplam = 0;
+    for (let sayi of sayilar) {
+        toplam += sayi;
+    }
+    return toplam;
+}
+
+console.log(topla(1, 2, 3));        // 6
+console.log(topla(1, 2, 3, 4, 5));  // 15
+```
+
+### Return Değerleri
+
+#### Basit Return
+```javascript
+function yasHesapla(dogumYili) {
+    return 2024 - dogumYili;
+}
+
+let yas = yasHesapla(1990);
+console.log("Yaşınız:", yas); // 34
+```
+
+#### Koşullu Return
+```javascript
+function notDegerlendir(puan) {
+    if (puan >= 90) {
+        return "Mükemmel";
+    } else if (puan >= 80) {
+        return "İyi";
+    } else if (puan >= 70) {
+        return "Orta";
+    } else {
+        return "Geliştirilmeli";
+    }
+}
+
+console.log(notDegerlendir(95)); // "Mükemmel"
+console.log(notDegerlendir(75)); // "Orta"
+```
+
+#### Object Return
+```javascript
+function kullaniciOlustur(isim, yas) {
+    return {
+        isim: isim,
+        yas: yas,
+        aktif: true,
+        olusturmaTarihi: new Date()
+    };
+}
+
+let kullanici = kullaniciOlustur("Faruk", 20);
+console.log(kullanici);
+```
+
+### Boolean Değer Döndüren Fonksiyonlar
+
+Boolean değer döndüren fonksiyonlar, `true` veya `false` değeri döndürür. Bu fonksiyonlar genellikle koşul kontrolü yapmak için kullanılır ve mantıksal işlemlerde önemli rol oynar.
+
+#### Temel Boolean Fonksiyonlar
+```javascript
+// Çift sayı kontrolü
 function isEven(num) {
     return num % 2 === 0;
 }
@@ -35,11 +163,47 @@ function isAdult(age) {
 
 console.log(isAdult(20)); // true
 console.log(isAdult(16)); // false
+
+// Boş string kontrolü
+function isEmpty(str) {
+    return str === "" || str === null || str === undefined;
+}
+
+console.log(isEmpty(""));     // true
+console.log(isEmpty("test")); // false
+```
+
+#### Karmaşık Boolean Fonksiyonlar
+```javascript
+// E-posta formatı kontrolü
+function isValidEmail(email) {
+    return email.includes('@') && 
+           email.includes('.') && 
+           email.length > 5;
+}
+
+console.log(isValidEmail("test@example.com")); // true
+console.log(isValidEmail("invalid"));          // false
+
+// Şifre güçlülük kontrolü
+function isStrongPassword(password) {
+    return password.length >= 8 && 
+           /[A-Z]/.test(password) && 
+           /[a-z]/.test(password) && 
+           /[0-9]/.test(password);
+}
+
+console.log(isStrongPassword("MyPass123")); // true
+console.log(isStrongPassword("weak"));      // false
 ```
 
 ### Return Early Pattern
+
+Return early pattern, fonksiyonlarda erken çıkış yaparak kodun okunabilirliğini artıran bir programlama tekniğidir. Bu pattern ile hatalı durumlar önce kontrol edilir ve fonksiyon erken sonlandırılır, böylece kod daha temiz ve anlaşılır hale gelir.
+
+#### Basit Return Early
 ```javascript
-// Return early pattern - erken çıkış
+// E-posta doğrulama
 function validateEmail(email) {
     if (!email) {
         return false;
@@ -60,9 +224,74 @@ console.log(validateEmail("test@example.com")); // true
 console.log(validateEmail("invalid"));          // false
 ```
 
-### Fonksiyon Örnekleri
+#### Karmaşık Return Early
 ```javascript
-// Kart sayma oyunu
+// Kullanıcı kayıt kontrolü
+function validateUser(user) {
+    // Boş kontrol
+    if (!user) {
+        return { valid: false, message: "Kullanıcı bilgisi gerekli" };
+    }
+    
+    // İsim kontrolü
+    if (!user.name || user.name.length < 2) {
+        return { valid: false, message: "Geçerli bir isim giriniz" };
+    }
+    
+    // E-posta kontrolü
+    if (!user.email || !user.email.includes('@')) {
+        return { valid: false, message: "Geçerli bir e-posta giriniz" };
+    }
+    
+    // Yaş kontrolü
+    if (!user.age || user.age < 18) {
+        return { valid: false, message: "18 yaşından büyük olmalısınız" };
+    }
+    
+    return { valid: true, message: "Kullanıcı bilgileri geçerli" };
+}
+
+let user1 = { name: "Faruk", email: "faruk@test.com", age: 20 };
+let user2 = { name: "A", email: "invalid", age: 16 };
+
+console.log(validateUser(user1)); // { valid: true, message: "..." }
+console.log(validateUser(user2)); // { valid: false, message: "..." }
+```
+
+### Fonksiyon Örnekleri
+
+#### Hesap Makinesi Fonksiyonları
+```javascript
+// Temel matematik işlemleri
+function topla(a, b) {
+    return a + b;
+}
+
+function cikar(a, b) {
+    return a - b;
+}
+
+function carp(a, b) {
+    return a * b;
+}
+
+function bol(a, b) {
+    if (b === 0) {
+        return "Sıfıra bölünemez!";
+    }
+    return a / b;
+}
+
+// Test
+console.log(topla(10, 5));     // 15
+console.log(cikar(10, 5));     // 5
+console.log(carp(10, 5));      // 50
+console.log(bol(10, 5));       // 2
+console.log(bol(10, 0));       // "Sıfıra bölünemez!"
+```
+
+#### Kart Sayma Oyunu
+```javascript
 function countingCards(card) {
     let count = 0;
     
@@ -92,13 +321,133 @@ function countingCards(card) {
 
 console.log(countingCards(2)); // "1 Bet"
 console.log(countingCards('K')); // "-1 Hold"
+console.log(countingCards(7)); // "0 Hold"
+```
+
+#### String İşleme Fonksiyonları
+```javascript
+// Palindrom kontrolü
+function isPalindrome(str) {
+    let temizStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+    let tersStr = temizStr.split('').reverse().join('');
+    return temizStr === tersStr;
+}
+
+console.log(isPalindrome("Eve"));     // true
+console.log(isPalindrome("Merhaba")); // false
+
+// Kelime sayısı
+function kelimeSayisi(cumle) {
+    return cumle.trim().split(/\s+/).length;
+}
+
+console.log(kelimeSayisi("JavaScript öğrenmek çok eğlenceli")); // 4
+
+// Başlık formatı
+function baslikFormatla(baslik) {
+    return baslik
+        .toLowerCase()
+        .split(' ')
+        .map(kelime => kelime.charAt(0).toUpperCase() + kelime.slice(1))
+        .join(' ');
+}
+
+console.log(baslikFormatla("javascript öğreniyorum")); // "Javascript Öğreniyorum"
+```
+
+#### Array İşleme Fonksiyonları
+```javascript
+// Dizi ortalaması
+function ortalamaHesapla(sayilar) {
+    if (sayilar.length === 0) {
+        return 0;
+    }
+    
+    let toplam = sayilar.reduce((acc, sayi) => acc + sayi, 0);
+    return toplam / sayilar.length;
+}
+
+console.log(ortalamaHesapla([1, 2, 3, 4, 5])); // 3
+
+// En büyük sayı
+function enBuyuk(sayilar) {
+    return Math.max(...sayilar);
+}
+
+console.log(enBuyuk([1, 5, 3, 9, 2])); // 9
+
+// Dizi filtreleme
+function ciftSayilar(sayilar) {
+    return sayilar.filter(sayi => sayi % 2 === 0);
+}
+
+console.log(ciftSayilar([1, 2, 3, 4, 5, 6])); // [2, 4, 6]
+```
+
+#### Tarih ve Zaman Fonksiyonları
+```javascript
+// Yaş hesaplama
+function yasHesapla(dogumTarihi) {
+    let bugun = new Date();
+    let dogum = new Date(dogumTarihi);
+    let yas = bugun.getFullYear() - dogum.getFullYear();
+    
+    // Doğum günü henüz gelmemişse yaşı bir azalt
+    if (bugun.getMonth() < dogum.getMonth() || 
+        (bugun.getMonth() === dogum.getMonth() && bugun.getDate() < dogum.getDate())) {
+        yas--;
+    }
+    
+    return yas;
+}
+
+console.log(yasHesapla("1990-05-15")); // Yaş
+
+// Tarih formatı
+function tarihFormatla(tarih) {
+    let d = new Date(tarih);
+    return d.toLocaleDateString('tr-TR');
+}
+
+console.log(tarihFormatla("2024-01-15")); // "15.01.2024"
+```
+
+#### Utility Fonksiyonlar
+```javascript
+// Rastgele sayı üretme
+function rastgeleSayi(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(rastgeleSayi(1, 10)); // 1-10 arası rastgele
+
+// ID oluşturma
+function idOlustur() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+console.log(idOlustur()); // Benzersiz ID
+
+// Para formatı
+function paraFormatla(miktar) {
+    return new Intl.NumberFormat('tr-TR', {
+        style: 'currency',
+        currency: 'TRY'
+    }).format(miktar);
+}
+
+console.log(paraFormatla(1234.56)); // "₺1.234,56"
 ```
 
 ---
 
 ## 🏗️ Nesneler (Objects)
 
+Nesneler (Objects), JavaScript'te veri saklamak ve organize etmek için kullanılan temel veri yapılarıdır. Nesneler, anahtar-değer (key-value) çiftleri şeklinde veri saklar ve bu verilere farklı yöntemlerle erişilebilir.
+
 ### Nesne Oluşturma
+
+Nesneler süslü parantez `{}` kullanılarak oluşturulur. Her özellik bir anahtar ve değer çifti olarak tanımlanır.
 ```javascript
 // Nesne oluşturma
 let kullanici = {
@@ -112,6 +461,8 @@ console.log(kullanici);
 ```
 
 ### Dot Notation (Nokta Notasyonu)
+
+Dot notation, nesne özelliklerine erişmek için en yaygın kullanılan yöntemdir. Nokta (.) operatörü kullanılarak nesne özelliklerine doğrudan erişilebilir ve değiştirilebilir.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -128,6 +479,8 @@ console.log(kullanici.yas);   // 21
 ```
 
 ### Bracket Notation (Köşeli Parantez Notasyonu)
+
+Bracket notation, köşeli parantez `[]` kullanarak nesne özelliklerine erişim sağlar. Bu yöntem özellikle dinamik özellik isimleri veya değişken kullanımı gerektiğinde faydalıdır.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -144,6 +497,8 @@ console.log(kullanici[property]); // "Faruk"
 ```
 
 ### Nesne Özelliklerini Güncelleme
+
+Nesne özellikleri, hem dot notation hem de bracket notation kullanılarak güncellenebilir. Mevcut özelliklerin değerleri değiştirilebilir.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -159,6 +514,8 @@ console.log(kullanici);
 ```
 
 ### Yeni Özellik Ekleme
+
+Nesnelere yeni özellikler eklenebilir. Bu işlem, mevcut olmayan bir özelliğe değer atanması ile gerçekleşir.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -173,6 +530,8 @@ console.log(kullanici);
 ```
 
 ### Özellik Silme
+
+Nesne özellikleri `delete` operatörü kullanılarak silinebilir. Bu işlem özelliği tamamen nesneden kaldırır.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -188,6 +547,8 @@ console.log(kullanici); // { isim: "Faruk" }
 ```
 
 ### Nesneleri Lookup (Arama) İçin Kullanma
+
+Nesneler, lookup table (arama tablosu) olarak kullanılabilir. Bu yöntem, if-else zincirleri yerine daha verimli ve okunabilir kod yazmayı sağlar.
 ```javascript
 // Telefon kodları lookup
 let telefonKodlari = {
@@ -206,6 +567,8 @@ console.log(getSehirKodu("İstanbul")); // 212
 ```
 
 ### Nesne Özelliklerini Test Etme
+
+Nesnelerin belirli özelliklere sahip olup olmadığını kontrol etmek için `hasOwnProperty()` metodu veya `in` operatörü kullanılır.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -222,6 +585,8 @@ console.log("meslek" in kullanici); // false
 ```
 
 ### Karmaşık Nesneler
+
+Karmaşık nesneler, iç içe geçmiş yapılar ve çoklu özellikler içeren nesnelerdir. Bu nesneler üzerinde işlem yapmak için özel fonksiyonlar yazılabilir.
 ```javascript
 let koleksiyon = {
     "2548": {
@@ -262,6 +627,8 @@ console.log(koleksiyon[5439]);
 ```
 
 ### İç İçe Nesneler
+
+İç içe nesneler, bir nesnenin içinde başka nesneler bulunduran yapılardır. Bu yapılar karmaşık veri organizasyonu için kullanılır.
 ```javascript
 let kullanici = {
     isim: "Faruk",
@@ -283,7 +650,11 @@ console.log(kullanici.hobiler[0]);  // "okuma"
 
 ## 🔄 Döngüler (Loops)
 
+Döngüler, belirli bir kod bloğunu tekrar tekrar çalıştırmak için kullanılan yapılardır. JavaScript'te farklı türde döngüler bulunur ve her birinin kendine özgü kullanım alanları vardır.
+
 ### While Döngüsü
+
+While döngüsü, belirli bir koşul doğru olduğu sürece kod bloğunu tekrar eder. Koşul false olduğunda döngü sona erer.
 ```javascript
 let i = 0;
 while (i < 5) {
@@ -298,6 +669,8 @@ while (i < 5) {
 ```
 
 ### For Döngüsü
+
+For döngüsü, başlangıç değeri, koşul ve artırma/azaltma işlemini tek satırda tanımlar. En yaygın kullanılan döngü türüdür.
 ```javascript
 // Temel for döngüsü
 for (let i = 0; i < 5; i++) {
@@ -316,6 +689,8 @@ for (let i = 10; i >= 1; i--) {
 ```
 
 ### Dizi ile For Döngüsü
+
+Diziler üzerinde iterasyon yapmak için for döngüsü kullanılır. Dizi uzunluğu `length` özelliği ile kontrol edilir.
 ```javascript
 let renkler = ["kırmızı", "mavi", "yeşil", "sarı"];
 
@@ -325,6 +700,8 @@ for (let i = 0; i < renkler.length; i++) {
 ```
 
 ### İç İçe For Döngüleri
+
+İç içe for döngüleri, döngü içinde başka döngüler kullanarak çok boyutlu veri yapıları üzerinde işlem yapmayı sağlar.
 ```javascript
 // Çarpım tablosu
 for (let i = 1; i <= 3; i++) {
@@ -348,6 +725,8 @@ for (let i = 0; i < matris.length; i++) {
 ```
 
 ### Do...While Döngüsü
+
+Do...while döngüsü, kod bloğunu en az bir kez çalıştırır, sonra koşulu kontrol eder. While döngüsünden farkı, koşulun kod bloğundan sonra kontrol edilmesidir.
 ```javascript
 let i = 0;
 do {
@@ -401,7 +780,11 @@ console.log(lookUpProfile("Ayşe", "number")); // "0544-987-6543"
 
 ## 🎲 Rastgele Sayılar
 
+Rastgele sayılar, programlama da önemli bir rol oynar. Oyunlar, simülasyonlar ve test verileri oluşturmak için kullanılır. JavaScript'te `Math.random()` fonksiyonu ile rastgele sayılar üretilebilir.
+
 ### Rastgele Kesirli Sayılar
+
+`Math.random()` fonksiyonu 0 ile 1 arasında (1 dahil değil) rastgele bir ondalıklı sayı döndürür.
 ```javascript
 // 0 ile 1 arasında rastgele sayı
 let rastgeleKesir = Math.random();
@@ -413,6 +796,8 @@ console.log(rastgeleTam); // 0-9 arası
 ```
 
 ### Belirli Aralıkta Rastgele Sayı
+
+Belirli bir aralıkta rastgele sayı üretmek için `Math.random()` sonucunu istenen aralığa ölçeklendirmek gerekir.
 ```javascript
 // min ile max arasında rastgele sayı
 function rastgeleSayi(min, max) {
@@ -443,7 +828,11 @@ console.log(rastgeleString(8)); // "A3fK9mP2"
 
 ## 🔢 parseInt Fonksiyonu
 
+`parseInt()` fonksiyonu, string değerleri tam sayıya dönüştürmek için kullanılır. Bu fonksiyon, string'in başındaki sayısal kısmı alır ve geri kalanını görmezden gelir.
+
 ### parseInt Temel Kullanımı
+
+`parseInt()` fonksiyonu, string'in başından itibaren sayısal karakterleri okur ve ilk sayısal olmayan karakterde durur.
 ```javascript
 // String'i sayıya çevirme
 let str1 = "123";
@@ -460,6 +849,8 @@ console.log(num3); // NaN (sayı ile başlamıyor)
 ```
 
 ### Radix (Taban) Parametresi
+
+`parseInt()` fonksiyonunun ikinci parametresi radix (taban) değeridir. Bu parametre, string'in hangi sayı sisteminde yorumlanacağını belirtir.
 ```javascript
 // Binary (2'lik taban)
 console.log(parseInt("1010", 2)); // 10
@@ -492,7 +883,11 @@ console.log(+str2);          // 123
 
 ## ❓ Ternary Operatör
 
+Ternary operatör, if-else yapısının kısa yazım şeklidir. Üç operand alır: koşul, doğru durumda döndürülecek değer ve yanlış durumda döndürülecek değer.
+
 ### Temel Ternary Operatör
+
+Ternary operatör `koşul ? değer1 : değer2` şeklinde yazılır. Koşul doğruysa değer1, yanlışsa değer2 döndürülür.
 ```javascript
 let yas = 20;
 let durum = yas >= 18 ? "Yetişkin" : "Çocuk";
@@ -507,6 +902,8 @@ if (yas >= 18) {
 ```
 
 ### Çoklu Ternary Operatör
+
+Çoklu ternary operatör, birden fazla koşulu kontrol etmek için kullanılır. Ancak çok fazla iç içe geçmiş ternary operatörler kodun okunabilirliğini azaltabilir.
 ```javascript
 let not = 85;
 let harfNotu = not >= 90 ? "A" : 
@@ -546,7 +943,11 @@ console.log(checkSign(0));  // "sıfır"
 
 ## 🔄 var vs let vs const
 
+JavaScript'te değişken tanımlamak için üç farklı anahtar kelime kullanılabilir: `var`, `let` ve `const`. Her birinin farklı scope (kapsam) kuralları ve davranışları vardır.
+
 ### var Kullanımı
+
+`var` anahtar kelimesi function scope'a sahiptir ve hoisting (yükseltme) özelliği vardır. Modern JavaScript'te kullanımı önerilmez.
 ```javascript
 // var - function scope
 function testVar() {
@@ -567,6 +968,8 @@ console.log(z); // 2
 ```
 
 ### let Kullanımı
+
+`let` anahtar kelimesi block scope'a sahiptir ve hoisting özelliği vardır ancak temporal dead zone kuralı geçerlidir. Modern JavaScript'te tercih edilen değişken tanımlama yöntemidir.
 ```javascript
 // let - block scope
 function testLet() {
@@ -586,6 +989,8 @@ let z = 1;
 ```
 
 ### const Kullanımı
+
+`const` anahtar kelimesi sabit değerler için kullanılır. Değeri değiştirilemez ancak object ve array içerikleri değiştirilebilir. Block scope'a sahiptir.
 ```javascript
 // const - sabit değer
 const PI = 3.14159;
@@ -631,7 +1036,11 @@ const deepFreeze = (obj) => {
 
 ## ➡️ Arrow Functions
 
+Arrow functions (ok fonksiyonları), ES6 ile gelen modern fonksiyon yazım şeklidir. Geleneksel fonksiyonlardan farklı olarak kendi `this` bağlamına sahip değildir ve daha kısa syntax'a sahiptir.
+
 ### Temel Arrow Function
+
+Arrow functions, `=>` operatörü kullanılarak yazılır. Tek satırlık fonksiyonlarda `return` anahtar kelimesi gerekmez.
 ```javascript
 // Geleneksel fonksiyon
 function topla(a, b) {
@@ -669,6 +1078,8 @@ console.log(selamla()); // "Merhaba!"
 ```
 
 ### this Bağlamı
+
+Arrow functions'ın en önemli farkı `this` bağlamıdır. Geleneksel fonksiyonlar kendi `this` değerine sahipken, arrow functions dış scope'daki `this` değerini kullanır.
 ```javascript
 // Geleneksel fonksiyon - kendi this'i var
 let obj1 = {
@@ -694,7 +1105,11 @@ obj2.selamla(); // "Merhaba undefined"
 
 ## 🚀 Modern JavaScript Özellikleri
 
+Modern JavaScript (ES6+), geliştiricilere daha güçlü ve esnek araçlar sunar. Bu özellikler kod yazmayı kolaylaştırır ve daha okunabilir hale getirir.
+
 ### Default Parameters
+
+Default parameters, fonksiyon parametrelerine varsayılan değerler atanmasını sağlar. Eğer fonksiyon çağrılırken parametre verilmezse, varsayılan değer kullanılır.
 ```javascript
 // Varsayılan parametreler
 function selamla(isim = "Misafir", mesaj = "Merhaba") {
@@ -707,6 +1122,8 @@ console.log(selamla("Faruk", "Selam"));   // "Selam Faruk!"
 ```
 
 ### Rest Operator (...)
+
+Rest operator (`...`), fonksiyon parametrelerinde kalan tüm argümanları bir dizi olarak toplar. Bu özellik, belirsiz sayıda parametre alan fonksiyonlar yazmayı kolaylaştırır.
 ```javascript
 // Rest operator - kalan parametreleri toplar
 function topla(...sayilar) {
@@ -723,6 +1140,8 @@ console.log(kalan);  // [3, 4, 5]
 ```
 
 ### Spread Operator (...)
+
+Spread operator (`...`), dizileri veya nesneleri genişletir. Dizileri birleştirmek, nesneleri kopyalamak veya fonksiyon argümanları olarak kullanmak için kullanılır.
 ```javascript
 // Array'leri birleştirme
 const arr1 = [1, 2, 3];
@@ -746,6 +1165,8 @@ console.log(topla(...sayilar)); // 6
 ```
 
 ### Destructuring Assignment
+
+Destructuring assignment, dizilerden veya nesnelerden değerleri çıkarıp ayrı değişkenlere atamayı sağlar. Bu özellik kod yazmayı hızlandırır ve daha okunabilir hale getirir.
 ```javascript
 // Array destructuring
 const renkler = ["kırmızı", "mavi", "yeşil"];
@@ -776,7 +1197,11 @@ console.log(sehir); // "Ankara"
 
 ## 📝 ES6+ Özellikleri
 
+ES6+ özellikleri, JavaScript'i daha modern ve güçlü hale getiren gelişmelerdir. Bu özellikler kod yazmayı kolaylaştırır ve daha okunabilir hale getirir.
+
 ### Template Literals
+
+Template literals, string oluşturmanın modern yoludur. Backtick (`) karakteri kullanılır ve değişkenler `${}` içinde yazılır.
 ```javascript
 const isim = "Faruk";
 const yas = 20;
@@ -800,6 +1225,8 @@ console.log(cokSatirli);
 ```
 
 ### Simple Fields
+
+Simple fields, nesne oluştururken değişken isimleri ile özellik isimleri aynıysa kısa yazım sağlar. Ayrıca metod tanımlamak için de kısa syntax kullanılabilir.
 ```javascript
 const isim = "Faruk";
 const yas = 20;
@@ -856,7 +1283,11 @@ const hesap = {
 
 ## 🏛️ Class Syntax
 
+ES6 ile gelen class syntax, JavaScript'te nesne yönelimli programlama yapmayı kolaylaştırır. Class'lar, nesneler için şablon görevi görür ve inheritance (kalıtım) destekler.
+
 ### Temel Class
+
+Class'lar `class` anahtar kelimesi ile tanımlanır. `constructor` metodu, class'tan nesne oluşturulurken çalışır.
 ```javascript
 class Kullanici {
     constructor(isim, yas) {
@@ -880,6 +1311,8 @@ console.log(kullanici.yas); // 21
 ```
 
 ### Inheritance (Kalıtım)
+
+Inheritance, bir class'ın başka bir class'tan özellik ve metodları miras almasını sağlar. `extends` anahtar kelimesi ile gerçekleştirilir.
 ```javascript
 class Kullanici {
     constructor(isim, yas) {
@@ -908,6 +1341,8 @@ console.log(admin.adminSelamla());
 ```
 
 ### Getters ve Setters
+
+Getters ve setters, class özelliklerine erişimi kontrol etmek için kullanılır. Getter'lar özellik değerini döndürür, setter'lar özellik değerini ayarlar.
 ```javascript
 class Daire {
     constructor(yaricap) {
@@ -946,7 +1381,11 @@ console.log(daire.alan);   // 314.15...
 
 ## 📦 Import/Export
 
+ES6 modül sistemi, JavaScript kodunu farklı dosyalara bölmeyi ve bu dosyalar arasında veri paylaşımını sağlar. `import` ve `export` anahtar kelimeleri kullanılır.
+
 ### Named Export
+
+Named export, belirli isimlerle fonksiyon, değişken veya class'ları dışa aktarır. Bu öğeler aynı isimlerle import edilmelidir.
 ```javascript
 // math.js
 export const PI = 3.14159;
@@ -968,6 +1407,8 @@ console.log(cikar(5, 2));  // 3
 ```
 
 ### Default Export
+
+Default export, bir modülden varsayılan olarak dışa aktarılacak öğeyi belirtir. Her modülde sadece bir default export olabilir.
 ```javascript
 // Kullanici.js
 class Kullanici {
@@ -1154,3 +1595,4 @@ oyun.puanEkle(50);
 oyun.puanEkle(60);
 console.log(oyun.oyunBilgisi());
 ```
+
