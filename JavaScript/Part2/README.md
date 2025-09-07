@@ -13,8 +13,6 @@
 - [ES6+ Özellikleri](#es6-özellikleri)
 - [Class Syntax](#class-syntax)
 - [Import/Export](#importexport)
-- [Alıştırmalar](#alıştırmalar)
-- [Kaynaklar](#kaynaklar)
 
 ---
 
